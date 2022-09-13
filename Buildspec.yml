@@ -6,15 +6,15 @@ phases:
   pre_build:
     commands:
       - echo logging in to AWS ECR...
-      - $(aws ecr get-login --no-include-email --region ap-south-1)
+      - $(aws ecr get-login --no-include-email --region ap-northeast-1)
   build:
     commands:
       - echo build Docker image on `date`
-      - docker build -t awswitharun:latest .
-      - docker tag awswitharun:latest 763614867397.dkr.ecr.ap-south-1.amazonaws.com/awswitharun:latest
+      - docker build -t testecrtk .
+      - docker tag testecrtk:latest 763614867397.dkr.ecr.ap-northeast-1.amazonaws.com/testecrtk:latest
   post_build:
     commands:
       - echo build Docker image complete `date`
       - echo push latest Docker images to ECR...
-      - docker push 763614867397.dkr.ecr.ap-south-1.amazonaws.com/awswitharun:latest
+      - docker push 763614867397.dkr.ecr.ap-northeast-1.amazonaws.com/testecrtk:latest
       
