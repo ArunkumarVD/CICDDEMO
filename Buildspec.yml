@@ -3,10 +3,13 @@ phases:
   install:
     commands:
       - echo install step...
+
   pre_build:
     commands:
       - echo logging in to AWS ECR...
       - $(aws ecr get-login --no-include-email --region ap-northeast-1)
+      - echo '-----------------------------------------------------------'
+      - echo $ARUN
   build:
     commands:
       - echo build Docker image on `date`
